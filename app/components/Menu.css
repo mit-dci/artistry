@@ -1,0 +1,56 @@
+
+.container {
+  position: fixed;
+  height: 100%;
+  width: 25%;
+  top: 0px;
+  left: 0px;
+  text-align: center;
+  background-color: #280F36;
+}
+
+.logo {
+  width: 100%;
+  height: 33%;
+  background: url("../../resources/img/artistryL5.png") no-repeat center center;
+  background-size: 90%;
+}
+
+.container .menu .selected {
+    font-weight: 700;
+    color: #FFC1A0;
+}
+
+.container .menu{
+    position:relative;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    width:90%;
+    height: 100%;
+    text-align: left;
+    margin: 5%;
+
+}
+
+.menuItemContainer{
+    position:relative;
+    padding-top:50px;
+    height:33%;
+    width: 100%;
+}
+
+.menuItem{
+    position: relative;
+    height: 25%;
+    width: 100%;
+}
+
+.footer{
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+   font-style: normal;
+   color: white;
+   font-size: .6rem;
+}
