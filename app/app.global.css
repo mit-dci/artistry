@@ -1,14 +1,15 @@
 @import "~font-awesome/css/font-awesome.css";
 
 
-body {
+html, body {
   position: relative;
   color: #FFC1A0;
   height: 100vh;
+  min-height: 100vh !important;
   background-color: #280F36;
   background-image: linear-gradient(45deg, #280f36 10%, #632B6C);
   font-family: 'PT Sans', Helvetica, Helvetica Neue, serif;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 h2 {

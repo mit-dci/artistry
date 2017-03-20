@@ -6,15 +6,17 @@ import createLogger from 'redux-logger';
 import rootReducer from '../reducers';
 
 //import * as settingsActions from '../actions/settings';
+import * as actions from '../actions/actions';
 
 
 
-
-const actionCreators = {
-
-      push,
-};
+const actionCreators = Object.assign({}, actions, {push});
 /*
+const actionCreators = {
+    ...actions,
+    push,
+};
+
 const actionCreators = {
   ...settingsActions,
   push,

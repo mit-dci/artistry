@@ -8,7 +8,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
+     <div style={{'height':'100%', 'width':'100%', 'position':'relative'}}>
         {this.props.children}
       </div>
     );

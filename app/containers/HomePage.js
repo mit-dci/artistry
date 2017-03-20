@@ -5,7 +5,7 @@ import Menu from '../components/Menu';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as SettingsActions from '../actions/settings';
+//import * as SettingsActions from '../actions/settings';
 
 /*
 function mapStateToProps(state) {

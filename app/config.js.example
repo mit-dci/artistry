@@ -1,0 +1,4 @@
+module.exports = {
+        'lastfm_api_key' : 'YOUR_API_KEY_HERE',
+        'lastfm_secret' : 'YOUR_SECRET_HERE'
+}
