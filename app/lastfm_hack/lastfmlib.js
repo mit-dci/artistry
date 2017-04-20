@@ -32,7 +32,7 @@ var getPagePromise = function(username, page=1, timestamp=0){
                         result_song['album'] = track_list['recenttracks']['track'][i]['album']['#text'];
                         result_song['song'] = track_list['recenttracks']['track'][i]['name'];
                         result_song['mbid'] = track_list['recenttracks']['track'][i]['artist']['mbid'];
-                        result_song['image'] = track_list['recenttracks']['track'][i]['image'][0]['#text'];
+                        result_song['image'] = track_list['recenttracks']['track'][i]['image'][2]['#text'];
 
                         results['tracklist'].push(result_song);
 

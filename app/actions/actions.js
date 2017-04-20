@@ -11,7 +11,14 @@ export function pushSongs(songs=[], type='PUSH_NEW_SONGS') {
   }
 
   for (let i =0; i<songs.length; i++){
+
+    //add isRemoved field to raw result from LastFM
     songs[i]['isRemoved'] = false;
+
+    //some artists dont have mbids!! gonna use  'temp_' + <artistname>
+    if (songs[i]['mbid'] == "") songs[i]['mbid'] = 'temp_' + songs[i]['artist'];
+    console.log(songs[i]['image']);
+      console.log('this');
   }
 
   return {
