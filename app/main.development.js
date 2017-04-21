@@ -17,6 +17,10 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.on('window-all-closed', () => {
+
+  //const state = store.getState();
+  //localStorage.myAppState = JSON.stringify(state);
+
   if (process.platform !== 'darwin') app.quit();
 });
 

@@ -4,11 +4,18 @@ import thunk from 'redux-thunk';
 import { hashHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
 import rootReducer from '../reducers';
+import { persistStore, autoRehydrate } from 'redux-persist';
 
 
 const router = routerMiddleware(hashHistory);
-const enhancer = applyMiddleware(thunk, router);
+//const enhancer = applyMiddleware(thunk, router);
+const enhancer = composeEnhancers(
+  applyMiddleware(thunk, router),
+  autoRehydrate()
+);
 
 export default function configureStore(initialState?: settingsStateType) {
-  return createStore(rootReducer, initialState, enhancer); // eslint-disable-line
+  store = createStore(rootReducer, initialState, enhancer); // eslint-disable-line
+  persistStore(store);
+  return store;
 }
