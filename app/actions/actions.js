@@ -1,4 +1,75 @@
 import { getListeningHistory } from '../lastfm_hack/lastfmlib';
+var http = require("http"),
+    fs = require("fs");
+
+function getImageFileAndSave(imageUrl, cb){
+//actually get image and save to path
+    console.log('getImageFileAndSave');
+    const options = {
+        host: '',
+        port: 80,
+        path: imageUrl,
+        method: "GET",
+    };
+
+    let path = './images/'+imageUrl +'.png';
+    console.log(path);
+
+    let req = http.get(options, function(res){
+        let imagedata = ''
+        res.setEncoding('binary')
+
+        res.on('data', function(chunk){
+            imagedata += chunk
+        })
+
+        res.on('end', function(){
+            fs.writeFile(path, imagedata, 'binary', function(err){
+                if (err) throw err
+                console.log('File saved.')
+                cb(path);
+            })
+        })
+
+
+  });
+}
+
+export function getImage(imageUrl) {
+    //step 1. check store for cached image
+    //add if not there
+    //update timestamp if there
+    console.log('getImage - ' + imageUrl);
+    return (dispatch, getState) => {
+
+        const stateVar = getState();
+        let image_paths = stateVar.image_paths;
+
+        for (let i =0; i<image_paths.length; i++){
+            if (image_paths[i]['imageUrl'] == imageUrl){
+
+                replace_item = image_paths[i];
+                now = Date.now();
+                replace_item['timestamp'] = now;
+
+                dispatch(function(){ return {type:'UPDATE_IMAGE',
+                    index:i,
+                    item: replace_item
+                }});
+            }
+        }
+
+        getImageFileAndSave(imageUrl, function(path){
+            console.log('dispatching!');
+            now = Date.now();
+            item['timestamp'] = now;
+            item['imageUrl'] = imageUrl;
+            item['path'] = path;
+            dispatch(function(){return {type:'ADD_IMAGE', item:item};});
+        });
+    }
+
+}
 
 //---------------------------------------------------------------
 //--------------  ACTIONS FOR SONGS --------------------------

@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Menu from '../components/Menu';
 import { SongList } from '../components/SongList';
-import { getAndPushSongs, toggleSongRemoved } from '../actions/actions';
+import { getImage, getAndPushSongs, toggleSongRemoved } from '../actions/actions';
 
 
 export const SongHistory = connect(
   function mapStateToProps(state) {
-    return { song_history: state.song_list };
+    return { song_history: state.song_list,
+             image_paths: state.image_paths };
   },
   function mapDispatchToProps(dispatch) {
     return {
+      getImage: () => { dispatch(getImage()) },
       getAndPushNewSongs: () => { dispatch(getAndPushSongs()) },
       toggleSongRemoved: (timestamp) => { dispatch(toggleSongRemoved(timestamp)) }
     };
